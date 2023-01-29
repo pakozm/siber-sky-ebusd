@@ -1,0 +1,41 @@
+# type (r[1-9];w;u),circuit,name,[comment],[QQ],ZZ,PBSB,[ID],field1,part (m/s),datatypes/templates,divider/values,unit,comment,field2,part (m/s),datatypes/templates ,divider/values,unit,comment,field3,part (m/s),datatypes/templates,divider/values,unit,comment,field4,part (m/s),datatypes/templates,divider/values,unit,comment,field5,part (m/s),datatypes/templates,divider/values,unit,comment
+
+# MAIN CONTROL
+w,Siber,fan_operation,...,,3c,40cb,0101,speed,m,UIR,0=MOISTURE;1=NORMAL;2=HIGH;3=INTENSE,,
+r,Siber,fan_operation,...,,3c,4022,01
+w,Siber,airflow_0,...,,3c,4080,21,data,,UIR,,m³/h
+w,Siber,airflow_1,...,,3c,4080,01,data,,UIR,,m³/h
+w,Siber,airflow_2,...,,3c,4080,02,data,,UIR,,m³/h
+w,Siber,airflow_3,...,,3c,4080,03,data,,UIR,,m³/h
+
+# CONTROL FOR BYPASS, BALANCE, ...
+w,Siber,bypass_temperature,408001,,,4080,04,data,,UIR,10,°C
+w,Siber,bypass_hysteresis,408003,,,4080,30,data,,UIR,10,°C
+w,Siber,bypass_operation,408003,,,4080,1b,data,,UIR,0=AUTO;1=OPEN;2=OPEN
+w,Siber,preheater,408003,,,4080,31,data,,UIR,0=NO;1=YES
+w,Siber,pressure_imbalance,408009,,,4080,09,data,,SIR,,m³/h ,,,,,,,,,,,,,,,,,,,,,,,,,
+w,Siber,level,40a1000200,,,"40a1",00,data,m,UCH,,,,byp,s,BI4,0=BYPASS_CLOSED;1=BYPASS_OPEN,,,frost,s,BI2,0=FROST_CLOSED;1=FROST_OPEN
+
+# STATUS
+r,Siber,software_version,,,3c,4022,00,,,STR:*,,
+r,Siber,fan_operation,,,3c,4022,01,,,UIR,0=MOISTURE;1=NORMAL;2=HIGH;3=INTENSE,,
+r,Siber,supply_speed,,,3c,4022,02,,,UIR,,rpm
+r,Siber,exhaust_speed,,,3c,4022,03,,,UIR,,rpm
+r,Siber,dip_switch,,,3c,4022,04,,,UIR,,
+r,Siber,indoor_temperature,,,3c,4022,07,,,SIR,10,ºC
+r,Siber,outdoor_temperature,,,3c,4022,08,,,SIR,10,ºC
+r,Siber,supply_flow,,,3c,4022,0b,,,UIR,,m3/h
+r,Siber,exhaust_flow,,,3c,4022,0c,,,UIR,,m3/h
+r,Siber,supply_pressure,,,3c,4022,14,,,UIR,10,Pa
+r,Siber,exhaust_pressure,,,3c,4022,15,,,UIR,10,Pa
+r,Siber,ebus_sync_error,,,3c,4022,64,,,UIR,,
+r,Siber,bypass_status,,,3c,4022,0e,data,,UIR,0=INITIALIZE;1=OPENING;2=CLOSING;3=OPEN;4=CLOSED;5=ERROR,,
+r,Siber,total_operating_hours,,,3c,4050,24,actual,,UIR,-5,h,,,,UIR,,,,,,UIR,,,,,,UIR,,,,,,UIR,,,
+r,Siber,total_air_flow,,,3c,4050,25,actual,,UIR,-1000,m3,,,,UIR,,,,,,UIR,,,,,,UIR,,,,,,UIR,,,
+r,Siber,air_flow_level_0,,,3c,4050,21,actual,,UIR,,m/h,,minimum,,UIR,,m/h,,maximum,,UIR,,m/h,,step size,,UIR,,m/h,,factory setting,,UIR,,m/h,
+r,Siber,air_flow_level_1,,,3c,4050,01,actual,,UIR,,m/h,,minimum,,UIR,,m/h,,maximum,,UIR,,m/h,,step size,,UIR,,m/h,,factory setting,,UIR,,m/h,
+r,Siber,air_flow_level_2,,,3c,4050,02,actual,,UIR,,m/h,,minimum,,UIR,,m/h,,maximum,,UIR,,m/h,,step size,,UIR,,m/h,,factory setting,,UIR,,m/h,
+r,Siber,air_flow_level_3,,,3c,4050,03,actual,,UIR,,m/h,,minimum,,UIR,,m/h,,maximum,,UIR,,m/h,,step size,,UIR,,m/h,,factory setting,,UIR,,m/h,
+r,Siber,bypass_temperature,,,3c,4050,04,actual,,SIR,10,ºC,,minimum,,SIR,10,ºC,,maximum,,SIR,10,ºC,,step size,,SIR,10,ºC,,factory setting,,SIR,10,ºC,
+r,Siber,bypass_hysteresis,,,3c,4050,30,actual,,SIR,10,ºC,,minimum,,SIR,10,ºC,,maximum,,SIR,10,ºC,,step size,,SIR,10,ºC,,factory setting,,SIR,10,ºC,
+r,Siber,bypass_operation,,,3c,4050,1b,actual,,UIR,,,,minimum,,UIR,,,,maximum,,UIR,,,,step size,,UIR,,,,factory setting,,UIR,,,
